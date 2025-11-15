@@ -386,4 +386,157 @@ nav a:hover {
 }
 
 
+/*Cadastro */
+.cadastro-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+.imagem-cadastro {
+    width: 50%;
+    background-image: url(../assets/imgs/bojackCadastro.png); 
+    background-size: cover;
+    background-position: center;
+}
+
+/*formulario do cadastro */
+.cadastro {
+    background: #ffffff;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 80px;
+}
+
+.titulo-cadastro {
+    color: #1a1a1a;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 35px;
+    
+}
+
+/* titulo dos inputs */
+.span-cadastro {
+    color: #333333;
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.input-cadastro {
+    background: #f2f2f2;
+    width: 100%;
+    border-radius: 10px;
+    padding: 13px 15px;
+    border: 1px solid #dcdcdc; /*para criar a borda */
+    font-size: 15px;
+    margin-bottom: 18px;
+}
+
+.botao-cadastro {
+    background: #ffdd00;
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 10px;
+    font-size: 17px;
+}
+
+.botao-cadastro:hover {
+    background: #ffe44d;
+}
+
+.p_login {
+    color: black;
+    text-align: center;
+    margin-top: 18px;
+    font-size: 14px;
+}
+
+.a_login {
+    color: #ffcc00;
+    font-weight: 600;
+}
+
+
+/*Login*/
+.login-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+.imagem-login {
+    width: 50%;
+    background-image: url(../assets/imgs/bojackLogin.png); 
+    background-size: cover;
+    background-position: center;
+}
+
+/*formulario do login */
+.login {
+    background: #ffffff;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 80px;
+    
+}
+
+.titulo-login {
+    color: #1a1a1a;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 35px;
+    
+}
+
+/* titulo dos inputs */
+.span-login {
+    color: #333333;
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.input-login {
+    width: 100%;
+    border-radius: 10px;
+    padding: 13px 15px;
+    border: 1px solid #dcdcdc; /*para criar a borda */
+    background: #f2f2f2;
+    font-size: 15px;
+    margin-bottom: 18px;
+}
+
+.botao-login {
+    background: #ffdd00;
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 10px;
+    font-size: 17px;
+}
+
+.botao-login:hover {
+    background: #ffe44d;
+}
+
+.texto-cadastro {
+    color: black;
+    text-align: center;
+    margin-top: 18px;
+    font-size: 14px;
+}
+
+.a_cadastro {
+    color: #ffcc00;
+    font-weight: 600;
+}
+
+
 
