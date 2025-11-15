@@ -6,36 +6,37 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>AquaTech | Cadastro</title>
+  <title>Bojack | Cadastro</title>
 
   <script src="./js/sessao.js"></script>
 
-  <link rel="stylesheet" href="./css/cadastro.css" />
+  <link rel="stylesheet" href="./css/estilo.css" />
   <link rel="icon" href="./assets/icon/favicon2.ico" />
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
 <body onload="listar()">
   <!--header inicio-->
-  <div class="header">
-    <div class="container">
-      <h1 class="titulo">Bojack</h1>
-      <ul class="navbar">
-        <li>
-          <a href="index.html">Home</a>
-        </li>
-        <li>
-          <a href="simulador.html">Sobre</a>
-        </li>
-        <li>
-          <a href="login.html">Personagens</a>
-        </li>
-        <li>
-          <a href="login.html">Comunidade</a>
-        </li>
-      </ul>
-    </div>
-  </div>
+    <header>
+        <div class="logo">
+            <img src="./assets/icon/Logo_bojack.png" alt="Logo Bojack Horseman">
+        </div>
+        <nav>
+            <ul>
+                <div>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Personagens</a></li>
+                    <li><a href="#">Comunidade</a></li>
+                </div>
+            </ul>
+        </nav>
+
+        <div class="botoes">
+            <button onclick="window.location.href='login.html'" class="login">Login</button>
+        </div>
+    </header>
+<!-- 
   <div class="login">
     <div class="alerta_erro">
       <div class="card_erro" id="cardErro">
@@ -44,13 +45,14 @@
     </div>
     <div class="container">
       <div class="card card-cadastro">
-        <h2>Bem-vindo!</h2>
-        <div class="formulario">
+        <div class="formulario"> -->
           <!--
                          Para inserir mais um campo, copie uma das inputs abaixo.
                          Assim que inserir vá para o script abaixo.
                      -->
  <div class="cadastro-container">
+
+  <div class="imagem-cadastro"></div>
   <div class="cadastro">
     <h1 class="titulo-cadastro">Crie Sua Conta - Cadastre-se</h1>
 
@@ -75,11 +77,11 @@
 </div>
 
  
-
+<!-- 
         <div id="div_erros_login"></div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 </body>
 
