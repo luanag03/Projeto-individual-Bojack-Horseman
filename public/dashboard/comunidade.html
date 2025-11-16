@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Avisos</title>
+    <title>Bojack | Comunidade</title>
 
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
@@ -21,45 +21,31 @@
 
 <body onload="validarSessao(), atualizarFeed()" style="background-color: #161618;">
 
-    <div class="janela">
+  <header class="home">
+    <div class="logo">
+        <img src="./assets/icon/Logo_bojack.png" alt="Logo BoJack Horseman">
+    </div>
 
-
-        <div class="header-left">
-
-            <h1>AquaTech</h1>
-
-            <div class="hello">
+    <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
+    <nav class="nav-dash">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="./quiz.html">Quiz</a></li>
+            <li><a href="./dashboard.html">Dashboard</a></li>
+            <li><a href="./comunidade.html">Comunidade</a></li>
+        </ul>
+    </nav>
 
-            <div class="btn-nav-white">
-                <a href="cards.html">
-                    <h3>Aquários</h3>
-                </a>
-            </div>
+    <div class="sair">
+        <a href="../index.html">
+            <img src="./assets/icon/sair.png" alt="Ícone sair">
+            Sair
+        </a>
+    </div>
+</header>
 
-            <div class="btn-nav-white">
-                <a href="./dashboard.html">
-                    <h3>Gráficos</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav">
-                <h3>Mural de Avisos</h3>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-
-        </div>
-
-        <div class="dash-right">
-
-
-            <div class="avisos">
-                <div id="alerta">
-                </div>
                 <div class="container">
                     <h1>Publicar um aviso</h1>
                     <div class="div-form">
