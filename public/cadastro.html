@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
-<body onload="listar()">
+<body>
   <!--header inicio-->
     <header>
         <div class="logo">
@@ -36,16 +36,14 @@
             <button onclick="window.location.href='login.html'" class="login">Login</button>
         </div>
     </header>
-<!-- 
-  <div class="login">
+
+  <main class="container-erro">
+    <section class="hero"></section>
     <div class="alerta_erro">
       <div class="card_erro" id="cardErro">
         <span id="mensagem_erro"></span>
       </div>
     </div>
-    <div class="container">
-      <div class="card card-cadastro">
-        <div class="formulario"> -->
           <!--
                          Para inserir mais um campo, copie uma das inputs abaixo.
                          Assim que inserir vá para o script abaixo.
@@ -57,18 +55,18 @@
     <h1 class="titulo-cadastro">Crie Sua Conta - Cadastre-se</h1>
 
     <span class="span-cadastro" id="span_nome">Nome completo:</span>
-    <input type="text" id="nome" class="input-cadastro" placeholder="Digite seu nome completo"> <br>
+    <input type="text" id="nome_input" class="input-cadastro" placeholder="Digite seu nome completo"> <br>
 
     <span class="span-cadastro" id="span_email">Email:</span>
-    <input type="email" id="email" class="input-cadastro" placeholder="Digite seu email" > <br>
+    <input type="email" id="email_input" class="input-cadastro" placeholder="Digite seu email" > <br>
 
     <span class="span-cadastro" id="span_senha">Senha:</span>
-    <input type="password" id="senha" class="input-cadastro" placeholder="Digite sua senha"> <br>
+    <input type="password" id="senha_input" class="input-cadastro" placeholder="Digite sua senha"> <br>
 
     <span class="span-cadastro" id="span_confirmar">Confirme sua senha:</span>
-    <input type="password" id="confirmar" class="input-cadastro" placeholder="Confirme sua senha"> <br><br>
+    <input type="password" id="confirmacao_senha_input" class="input-cadastro" placeholder="Confirme sua senha"> <br><br>
 
-    <button class="botao-cadastro">Criar Conta</button>
+    <button class="botao-cadastro" onclick="cadastrar()" >Criar Conta</button>
 
     <p class="p_login">
       Você já tem uma conta? <a href="login.html" class="a_login">Logar</a>
@@ -76,12 +74,10 @@
   </div>
 </div>
 
- 
-<!-- 
         <div id="div_erros_login"></div>
       </div>
     </div>
-  </div> -->
+  </div> 
 
 </body>
 
@@ -90,7 +86,6 @@
 <script>
 
   // Array para armazenar empresas cadastradas para validação de código de ativação 
-  let listaEmpresasCadastradas = [];
 
   function cadastrar() {
     // aguardar();
@@ -101,39 +96,24 @@
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    // var codigoVar = codigo_input.value;
-    // var idEmpresaVincular
 
     // Verificando se há algum campo em branco
     if (
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      codigoVar == ""
+      confirmacaoSenhaVar == "" 
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Por favor, preencha todos os campos para concluir o cadastro!)";
+        "Por favor, preencha todos os campos para concluir o cadastro!";
 
+        
       finalizarAguardar();
       return false;
     } else {
       setInterval(sumirMensagem, 5000);
     }
-
-    // Verificando se o código de ativação é de alguma empresa cadastrada
-    // for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
-    //   if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
-    //     idEmpresaVincular = listaEmpresasCadastradas[i].id
-    //     console.log("Código de ativação válido.");
-    //     break;
-    //   } else {
-    //     cardErro.style.display = "block";
-    //     mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-    //     finalizarAguardar();
-    //   }
-    // }
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -146,8 +126,7 @@
         // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
         emailServer: emailVar,
-        senhaServer: senhaVar,
-        // idEmpresaVincularServer: idEmpresaVincular
+        senhaServer: senhaVar
       }),
     })
       .then(function (resposta) {
@@ -176,26 +155,6 @@
 
     return false;
   }
-
-  // Listando empresas cadastradas 
-  // function listar() {
-  //   fetch("/empresas/listar", {
-  //     method: "GET",
-  //   })
-  //     .then(function (resposta) {
-  //       resposta.json().then((empresas) => {
-  //         empresas.forEach((empresa) => {
-  //           listaEmpresasCadastradas.push(empresa);
-
-  //           console.log("listaEmpresasCadastradas")
-  //           console.log(listaEmpresasCadastradas[0].codigo_ativacao)
-  //         });
-  //       });
-  //     })
-  //     .catch(function (resposta) {
-  //       console.log(`#ERRO: ${resposta}`);
-  //     });
-  // }
 
   function sumirMensagem() {
     cardErro.style.display = "none";

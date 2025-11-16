@@ -537,3 +537,31 @@ nav a:hover {
     color: #ffcc00;
     font-weight: 600;
 }
+
+.alerta_erro{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card_erro {
+  background-color: #ffe0e0;
+  border: 1px solid #ff5c5c;
+  position: fixed;
+  color: #b30000;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: none;
+}
+.card_erro #mensagem_erro{
+  font-weight: 500;
+  font-size: 20px;
+}
+
+#div_erros_login {
+    margin-top: 10px;
+    text-align: center;
+    color: red;
+    font-size: 14px;
+} 
