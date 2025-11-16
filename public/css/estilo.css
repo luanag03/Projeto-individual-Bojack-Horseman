@@ -538,6 +538,7 @@ nav a:hover {
     font-weight: 600;
 }
 
+/* Erros */
 .alerta_erro{
   display: flex;
   justify-content: flex-end;

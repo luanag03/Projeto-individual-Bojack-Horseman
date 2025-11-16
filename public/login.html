@@ -46,12 +46,12 @@
       <h1 class="titulo-login">Faça seu Login:</h1>
 
       <span class="span-login" id="span_email">Email:</span>
-      <input type="email" id="email-login" class="input-login" placeholder="Digite seu email"> <br>
+      <input type="email" id="email_input" class="input-login" placeholder="Digite seu email"> <br>
 
       <span class="span-login" id="span_senha">Senha:</span>
-      <input type="password" id="senha_login" class="input-login" placeholder="Digite sua senha"> <br><br>
+      <input type="password" id="senha_input" class="input-login" placeholder="Digite sua senha"> <br><br>
      
-      <button class="botao-login">Login</button>
+      <button class="botao-login" onclick="entrar()" >Login</button>
 
 
       <p class="texto-cadastro">
@@ -69,14 +69,14 @@
 
 
   function entrar() {
-    aguardar();
+    // aguardar();
 
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
 
     if (emailVar == "" || senhaVar == "") {
       cardErro.style.display = "block"
-      mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+      mensagem_erro.innerHTML = "Mensagem de erro para todos os campos em branco";
       finalizarAguardar();
       return false;
     }
@@ -107,11 +107,10 @@
           console.log(JSON.stringify(json));
           sessionStorage.EMAIL_USUARIO = json.email;
           sessionStorage.NOME_USUARIO = json.nome;
-          sessionStorage.ID_USUARIO = json.id;
-          sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+          sessionStorage.ID_USUARIO = json.idUsuario;
 
           setTimeout(function () {
-            window.location = "./dashboard/cards.html";
+            window.location = "./dashboard/home.html";
           }, 1000); // apenas para exibir o loading
 
         });
