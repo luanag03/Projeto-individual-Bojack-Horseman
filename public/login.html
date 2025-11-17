@@ -16,7 +16,7 @@
 </head>
 
 <body>
-
+  
   <!--Header-->
 
   <header>
@@ -33,6 +33,12 @@
         </div>
       </ul>
     </nav>
+
+      <main class="container_erro">
+        <div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+              <span id="mensagem_erro"></span>
+            </div>
 
     <div class="botoes">
       <button onclick="window.location.href='cadastro.html'" class="cadastro">Cadastro</button>
@@ -76,7 +82,7 @@
 
     if (emailVar == "" || senhaVar == "") {
       cardErro.style.display = "block"
-      mensagem_erro.innerHTML = "Mensagem de erro para todos os campos em branco";
+      mensagem_erro.innerHTML = "Por favor, preencha todos os campos para continuar";
       finalizarAguardar();
       return false;
     }

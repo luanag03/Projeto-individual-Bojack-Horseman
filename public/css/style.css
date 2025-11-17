@@ -1,74 +1,152 @@
 /* Não usar pure white or pure black: https://uxplanet.org/basicdesign-never-use-pure-black-in-typography-36138a3327a6 */
 /* The 4-point grid system: https://medium.com/@sainzkike/controlling-spacing-in-design-systems-multiple-spacing-9bf1afec87f */
-
-:root {
-    --primary-brand-color: #ED145B;
-    --secondary-brand-color: #0762C8;
-    --success: #198754;
-    --success-dark: #095c36;
-    --success-light: #9dd3ba;
-    --warning: #ffc107;
-    --warning-dark: #705400;
-    --warning-light: #fdebb3;
-    --danger: #dc3545;
-    --danger-dark: #990c19;
-    --danger-light: #f0c1c6;
-    --new-gray: #CCCCCC;
-    --new-black: #212427;
-    --new-white: #E8E8E8;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
 body {
-    color: var(--new-black);
-    background-color: var(--new-white);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-button {
-    font-family: monospace;
-    font-weight: bold;
-}
-
-.flex-colunar {
+    color: white;
+    background-image: url(../assets/imgs/dashFundo.png);
+    background-size: cover;
     display: flex;
+}
+
+/* navbar*/
+header.home {
+    display: flex;
+    flex-direction: column;
+    background: #bdbcbc;
+    width: 250px;
+    height: 135vh;
+    padding: 20px;
+    gap: 25px;
+}
+
+.logo img {
+    width: 160px;
+    margin: 30px ;
+    display: block;
+}
+
+.hello h3 {
+    color: #000000;
+    font-size: 23px;
+    text-align: center;
+}
+
+.nav-dash ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 40px;
+}
+
+.nav-dash ul li a {
+    display: block;
+    background: #f0d600;
+    padding: 18px;
+    border-radius: 5px;
+    text-align: center;
+    color: black;
+    font-weight: 600;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.nav-dash ul li a:hover {
+    background: #ffea51;
+}
+
+.sair a {
+    color: black;
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.sair img {
+    width: 22px;
+}
+
+/* Seção home */
+.card-principal {
+    padding: 40px;
+    width: 100%;
+}
+
+/* card 1 */
+.banner .card-banner {
+    display: flex;
+    background: #5551a3;
+    padding: 25px;
+    border-radius: 15px;
+    height: 300px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.texto-banner {
+    width: 50%;
+    display: flex;
+    gap: 30px;
     flex-direction: column;
 }
 
-.width-fit-content {
-    width: fit-content;
+.texto-banner h1 {
+    line-height: 32px;
 }
 
-.border-primary {
-    border: 3px solid var(--primary-brand-color);
+.botao-quiz {
+    background: #f0d600;
+    width: 170px;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: 600;
+    
 }
 
-.border-secondary {
-    border: 3px solid var(--secondary-brand-color);
+.botao-quiz:hover {
+    background: #ffea51;
 }
 
-.padding-8 {
-    padding: 8px;
+.img-banner img {
+    width: 500px;
+    border-radius: 10px;
+    border: 2px solid #ffffff;
+    box-shadow: 4px 4px 8px #000000;
 }
 
-.text-bold {
-    font-weight: bold;
+ /* card 2 */
+.porque .card-porque {
+    padding: 30px;
+    background: #5551a3;
+    border-radius: 15px;
+    margin-top: 40px;
 }
 
-.text-success-with-bg {
-    color: var(--success-dark);
-    background-color: var(--success-light);
+.porque h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
-.text-warning-with-bg {
-    color: var(--warning-dark);
-    background-color: var(--warning-light);
+/* card 3 */
+.comunidade-ultimo .card-comunidade-ultimo {
+    padding: 30px;
+    background: #5551a3;
+    border-radius: 15px;
+    margin-top: 40px;
 }
 
-.text-danger-with-bg {
-    color: var(--danger-dark);
-    background-color: var(--danger-light);
+.comunidade-ultimo h2 {
+    font-size: 25px;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
-.text-new-gray {
-    color: var(--new-gray);
-}
