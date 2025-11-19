@@ -385,6 +385,13 @@ nav a:hover {
     background-color: #d4ac0d;
 }
 
+.container_cavalo {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -332px;
+}
+
 
 /*Cadastro */
 .cadastro-container {
@@ -566,3 +573,4 @@ nav a:hover {
     color: red;
     font-size: 14px;
 } 
+
