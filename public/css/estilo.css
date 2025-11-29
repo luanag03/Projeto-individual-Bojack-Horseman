@@ -384,6 +384,12 @@ nav a:hover {
 .botao-comunidade:hover {
     background-color: #d4ac0d;
 }
+.container_cavalo {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -232px;
+}
 
 
 /*Cadastro */
