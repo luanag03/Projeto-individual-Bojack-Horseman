@@ -172,5 +172,126 @@
     }
   }
 
+  function exibirResultado() {
+    quizBox.classList.add("esconder");
+    resultadoBox.classList.remove("esconder");
+    listaRespostas.innerHTML = "";
+
+    document.getElementById("btnDashboard").style.display = "block";
+
+
+    for (let i = 0; i < respostas.length; i++) {
+      listaRespostas.innerHTML += `<li>Pergunta ${i + 1}: ${respostas[i]}</li>`;
+    }
+
+    let contagem = {};
+    for (let i = 0; i < respostas.length; i++) {
+      let letra = respostas[i];
+      if (contagem[letra] === undefined) {
+        contagem[letra] = 1;
+      } else {
+        contagem[letra] += 1;
+      }
+    }
+
+    let letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+    let maiorQtd = 0;
+    let letrasMaisEscolhidas = [];
+
+    for (let i = 0; i < letras.length; i++) {
+      let letra = letras[i];
+      if (contagem[letra] === undefined) {
+        contagem[letra] = 0;
+      }
+
+      if (contagem[letra] > maiorQtd) {
+        maiorQtd = contagem[letra];
+        letrasMaisEscolhidas = [letra];
+      } else if (contagem[letra] === maiorQtd) {
+        letrasMaisEscolhidas.push(letra);
+      }
+    }
+
+    console.log(contagem);
+
+    let letraEscolhida = "";
+    if (letrasMaisEscolhidas.length === 1) {
+      letraEscolhida = letrasMaisEscolhidas[0];
+    } else {
+      let indiceSorteado = Math.floor(Math.random() * letrasMaisEscolhidas.length);
+      letraEscolhida = letrasMaisEscolhidas[indiceSorteado];
+    }
+
+    let caminhoImagem = ``;
+
+    let personagemFinal = "";
+    if (letraEscolhida === 'a') {
+      personagemFinal = "Bojack Horseman";
+      caminhoImagem = `../assets/imgs/BojackQuiz.jpg`;
+    } else if (letraEscolhida === 'b') {
+      personagemFinal = "Sarah Lynn";
+      caminhoImagem = `../assets/imgs/sarah-lynnQuiz.webp`;
+    } else if (letraEscolhida === 'c') {
+      personagemFinal = "Princess Carolyn";
+      caminhoImagem = `../assets/imgs/princesacarolineQuiz.png`;
+    } else if (letraEscolhida === 'd') {
+      personagemFinal = "Mr. Peanutbutter";
+      caminhoImagem = `../assets/imgs/mrpeantbutterQuiz.jpeg`;
+    } else if (letraEscolhida === 'e') {
+      personagemFinal = "Diane";
+      caminhoImagem = `../assets/imgs/dianeQuiz.jpg`;
+    } else if (letraEscolhida === 'f') {
+      personagemFinal = "Beatrice Horseman";
+      caminhoImagem = `../assets/imgs/senhorahorsemanQuiz.png`;
+    } else if (letraEscolhida === 'g') {
+      personagemFinal = "Hollyhock";
+      caminhoImagem = `../assets/imgs/hollyhockQuiz.jpg`;
+    } else if (letraEscolhida === 'h') {
+      personagemFinal = "Todd Chavez";
+      caminhoImagem = `../assets/imgs/toddQuiz.jpg`;
+    } else {
+      personagemFinal = "Personagem desconhecido";
+      caminhoImagem = `../assets/imgs/`;
+    }
+
+    fetch(`/quiz/personagem`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ personagemFinal: personagemFinal })
+    })
+      .then(res => {
+        if (!res.ok) throw new Error("Erro ao buscar personagem no banco.");
+        return res.json();
+      })
+      .then(personagem => {
+   
+        listaRespostas.innerHTML += `
+      <img src="${caminhoImagem}" alt="Imagem do personagem ${personagem.personagem}" style="width: 400px; margin-top: 15px;" />
+      <li><b>Seu personagem é:</b> ${personagem.personagem}</li>
+      <li><b>Descrição:</b> ${personagem.Texto}</li>
+      <br> `;
+
+        const idUsuario = sessionStorage.ID_USUARIO;
+
+        fetch('/quiz/salvar-personagem', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            idUsuario: idUsuario,
+            idPersonagem: personagem.idPersonagem
+          })
+        })
+          .then(res => {
+            if (!res.ok) throw new Error("Erro ao salvar personagem no usuário.");
+            console.log("Personagem salvo com sucesso!");
+          })
+          .catch(erro => {
+            console.error("Erro ao salvar personagem no usuário:", erro);
+          });
+      })
+
+  }
+
+
 
 </script>
