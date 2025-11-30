@@ -264,3 +264,100 @@ button:disabled {
 .botao-dashboard:hover {
     background-color: #d1e77f;
 }
+
+/* comunidade */
+.container-aviso {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.container-aviso h1 {
+    text-align: center;
+    font-size: 80px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+.container-aviso span {
+    color: #fbff00;
+}
+
+.container-aviso h2 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 25px;
+    font-weight: 400;
+}
+
+.div-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+#form_postagem {
+    background: #adadad;
+    padding: 25px;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 16px rgba(0,0,0,0.12);
+    border-left: 6px solid #fbff00;
+}
+
+#form_postagem label {
+    font-weight: 500;
+}
+
+#titulo,
+#textarea_descricao {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #000000;
+
+}
+.enviar-aviso button {
+    margin-top: 15px;
+    padding: 12px 20px;
+    background: #6a5acd;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.enviar-aviso button:hover {
+    background: #cff109;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+.card:hover {
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+}
+
+.card h3 {
+    margin: 0 0 10px;
+    font-size: 20px;
+    color: #000000;
+}
+
+.card p {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.4;
+}
+
+.compartilhar{
+    font-size: 40px;
+}
+
