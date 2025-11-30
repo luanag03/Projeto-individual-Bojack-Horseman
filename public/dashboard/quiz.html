@@ -36,104 +36,114 @@
         </div>
     </header>
 
-    
-  <section class="content-secion">
-    <h1>Quiz Bojack Horseman</h1>
-    <div class="quiz-box">
-      <h2 style="margin-bottom: 32px;" id="quizTitulo">Descubra seu Personagem !</h2>
-      <button onclick="iniciarQuiz()" id="startBtn">Começar Quiz</button>
 
-      <div style="width: 100%;" id="quizContainer" class="esconder">
-        <div id="perguntaTexto" class="pergunta"></div>
-        <form onchange="habilitarBotao()" id="alternativasContainer"></form>
-        <button onclick="irParaProximaPergunta()" id="btnProxima">Próxima</button>
-      </div>
+    <section class="content-secion">
+        <h1>Quiz Bojack Horseman</h1>
+        <div class="quiz-box">
+            <h2 style="margin-bottom: 32px;" id="quizTitulo">Descubra seu Personagem !</h2>
+            <button onclick="iniciarQuiz()" id="startBtn">Começar Quiz</button>
 
-      <div id="resultado" class="esconder">
-        <h3>Suas respostas:</h3>
-        <ul id="respostasUsuario"></ul>
+            <div style="width: 100%;" id="quizContainer" class="esconder">
+                <div id="perguntaTexto" class="pergunta"></div>
+                <form onchange="habilitarBotao()" id="alternativasContainer"></form>
+                <button onclick="irParaProximaPergunta()" id="btnProxima">Próxima</button>
+            </div>
 
-      </div>
+            <div id="resultado" class="esconder">
+                <h3>Suas respostas:</h3>
+                <ul id="respostasUsuario"></ul>
 
-      <a href="./dashboard.html" id="btnDashboard" class="botao-dashboard" style="display:none; margin-top: 15px;">Ver
-        Dashboard</a>
+            </div>
 
-    </div>
-    </div>
+            <a href="./dashboard.html" id="btnDashboard" class="botao-dashboard"
+                style="display:none; margin-top: 15px;">Ver
+                Dashboard</a>
 
-
-  </section>
-
-
+        </div>
+        </div>
+    </section>
 
 </body>
+
 </html>
+
 <script>
 
- 
-  b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-  let perguntas = [];
-  let respostas = [];
-  let indicePergunta = 0;
-  const fkQuiz = 1;
+    let perguntas = [];
+    let respostas = [];
+    let indicePergunta = 0;
+    const fkQuiz = 1;
 
-  let idUltimaResposta = null;
+    let idUltimaResposta = null;
 
-  const startBtn = document.getElementById("startBtn");
-  const quizBox = document.getElementById("quizContainer");
-  const perguntaTexto = document.getElementById("perguntaTexto");
-  const alternativasContainer = document.getElementById("alternativasContainer");
-  const proximaBtn = document.getElementById("btnProxima");
-  const resultadoBox = document.getElementById("resultado");
-  const listaRespostas = document.getElementById("respostasUsuario");
-  proximaBtn.disabled = true;
+    const startBtn = document.getElementById("startBtn");
+    const quizBox = document.getElementById("quizContainer");
+    const perguntaTexto = document.getElementById("perguntaTexto");
+    const alternativasContainer = document.getElementById("alternativasContainer");
+    const proximaBtn = document.getElementById("btnProxima");
+    const resultadoBox = document.getElementById("resultado");
+    const listaRespostas = document.getElementById("respostasUsuario");
+    proximaBtn.disabled = true;
 
-  function habilitarBotao() {
-    proximaBtn.disabled = false;
-  };
+    function habilitarBotao() {
+        proximaBtn.disabled = false;
+    };
 
-  function iniciarQuiz() {
-    fetch(`/quiz/buscarQuiz/${fkQuiz}`)
-      .then(function (res) {
+    function iniciarQuiz() {
+        fetch(`/quiz/buscarQuiz/${fkQuiz}`)
+            .then(function (res) {
 
-        res.json().then(data => {
+                res.json().then(data => {
 
-          const perguntasID = {};
+                    const perguntasID = {};
 
-          for (let i = 0; i < data.length; i++) {
-            const item = data[i];
+                    for (let i = 0; i < data.length; i++) {
+                        const item = data[i];
 
-            if (!perguntasID[item.pergunta_id]) {
-              perguntasID[item.pergunta_id] = {
-                texto: item.pergunta_texto,
-                alternativas: []
-              };
-            }
+                        if (!perguntasID[item.pergunta_id]) {
+                            perguntasID[item.pergunta_id] = {
+                                texto: item.pergunta_texto,
+                                alternativas: []
+                            };
+                        }
 
-            perguntasID[item.pergunta_id].alternativas.push({
-              letra: item.alternativa_letra,
-              texto: item.alternativa_texto
-            });
-          }
+                        perguntasID[item.pergunta_id].alternativas.push({
+                            letra: item.alternativa_letra,
+                            texto: item.alternativa_texto
+                        });
+                    }
 
+                    perguntas = Object.values(perguntasID);
+                    respostas = [];
+                    indicePergunta = 0;
 
-          perguntas = Object.values(perguntasID);
-          respostas = [];
-          indicePergunta = 0;
+                    startBtn.style.display = "none";
+                    quizBox.classList.remove("esconder");
+                    mostrarPergunta();
+                })
+            })
+    }
 
-          startBtn.style.display = "none";
-          quizBox.classList.remove("esconder");
-          mostrarPergunta();
-        })
+    function mostrarPergunta() {
+        const pergunta = perguntas[indicePergunta];
+        perguntaTexto.textContent = pergunta.texto;
+        alternativasContainer.innerHTML = "";
+        proximaBtn.disabled = true;
 
-        //   .catch (error) {
-        //    alert("Erro ao carregar o quiz.");
-        //    console.error(error);
-        //  }
-      })
+        for (let i = 0; i < pergunta.alternativas.length; i++) {
+            const alt = pergunta.alternativas[i];
 
-    // Organizando as perguntas por ID
-  }
+            const id = `pergunta${indicePergunta}_alt${i}`;
+
+            alternativasContainer.innerHTML += `
+    <label class="alternativa">
+      <input type="radio" name="alternativa" value="${alt.letra}">
+      ${alt.letra}) ${alt.texto}
+    </label> `;
+        }
+
+    }
 
 </script>
