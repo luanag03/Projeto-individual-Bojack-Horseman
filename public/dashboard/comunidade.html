@@ -19,7 +19,7 @@
         rel="stylesheet">
 </head>
 
-<body>  <!--  onload="validarSessao(), atualizarFeed()" style="background-color: #161618;" -->
+<body> <!--  onload="validarSessao(), atualizarFeed()" style="background-color: #161618;" -->
 
     <header class="home">
         <div class="logo">
@@ -47,9 +47,10 @@
     </header>
 
     <div class="container-aviso">
-        <h1>Publicar um aviso</h1>
+        <h1><span>C</span>omunidade</h1>
+        <h2>Compartilhe suas ideias !</h2>
         <div class="div-form">
-            <form id="form_postagem" method="post" onsubmit="return publicar()">
+            <form id="form_postagem">
                 <label>
                     Título:
                     <br>
@@ -64,10 +65,10 @@
                 </label>
                 <br>
                 <br>
-                <button>Enviar</button>
+                <button onclick="publicar()" type="button" class="enviar-aviso">Enviar</button>
             </form>
         </div>
-        <h1>Mural de Avisos</h1>
+        <h3 class="compartilhar">Mural para compartilhar ideias </h3>
         <div class="div-results">
             <div id="feed_container" class="feed-container">
             </div>
@@ -76,9 +77,6 @@
     </div>
     </div>
     </div>
-
-
-
 
 </body>
 
