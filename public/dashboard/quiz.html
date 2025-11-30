@@ -35,3 +35,33 @@
             </a>
         </div>
     </header>
+
+    
+  <section class="content-secion">
+    <h1>Quiz Bojack Horseman</h1>
+    <div class="quiz-box">
+      <h2 style="margin-bottom: 32px;" id="quizTitulo">Descubra seu Personagem !</h2>
+      <button onclick="iniciarQuiz()" id="startBtn">Começar Quiz</button>
+
+      <div style="width: 100%;" id="quizContainer" class="esconder">
+        <div id="perguntaTexto" class="pergunta"></div>
+        <form onchange="habilitarBotao()" id="alternativasContainer"></form>
+        <button onclick="irParaProximaPergunta()" id="btnProxima">Próxima</button>
+      </div>
+
+      <div id="resultado" class="esconder">
+        <h3>Suas respostas:</h3>
+        <ul id="respostasUsuario"></ul>
+
+      </div>
+
+      <a href="./dashboard.html" id="btnDashboard" class="botao-dashboard" style="display:none; margin-top: 15px;">Ver
+        Dashboard</a>
+
+    </div>
+    </div>
+
+
+  </section>
+
+
