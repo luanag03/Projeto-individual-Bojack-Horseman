@@ -292,6 +292,27 @@
 
   }
 
+  function enviarResposta(letra) {
+    const fkUsuario = sessionStorage.getItem("ID_USUARIO");
+    if (!fkUsuario) {
+      alert("Usuário não autenticado.");
+      return;
+    }
+
+    fetch("/quiz/resposta/alternativa", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ fkUsuario, letra })
+    })
+      .then(res => {
+        console.log(res);
+
+      })
+      .catch(erro => {
+        console.error(erro);
+        alert("Erro ao enviar respostas.");
+      });
+  }
 
 
 </script>
