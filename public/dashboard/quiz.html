@@ -143,8 +143,34 @@
       ${alt.letra}) ${alt.texto}
     </label> `;
         }
-
     }
+  
+  function irParaProximaPergunta() {
+    proximaBtn.disabled = false
+
+    var alternativas = document.getElementsByName("alternativa");
+    var selecionada = null;
+
+    for (var i = 0; i < alternativas.length; i++) {
+      if (alternativas[i].checked) {
+        selecionada = alternativas[i];
+        break;
+      }
+    }
+
+    if (selecionada) {
+      respostas.push(selecionada.value);
+      enviarResposta(selecionada.value);
+    }
+
+    indicePergunta++;
+
+    if (indicePergunta < perguntas.length) {
+      mostrarPergunta();
+    } else {
+      exibirResultado();
+    }
+  }
 
 
 </script>
