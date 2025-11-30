@@ -65,3 +65,75 @@
   </section>
 
 
+
+</body>
+</html>
+<script>
+
+ 
+  b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+  let perguntas = [];
+  let respostas = [];
+  let indicePergunta = 0;
+  const fkQuiz = 1;
+
+  let idUltimaResposta = null;
+
+  const startBtn = document.getElementById("startBtn");
+  const quizBox = document.getElementById("quizContainer");
+  const perguntaTexto = document.getElementById("perguntaTexto");
+  const alternativasContainer = document.getElementById("alternativasContainer");
+  const proximaBtn = document.getElementById("btnProxima");
+  const resultadoBox = document.getElementById("resultado");
+  const listaRespostas = document.getElementById("respostasUsuario");
+  proximaBtn.disabled = true;
+
+  function habilitarBotao() {
+    proximaBtn.disabled = false;
+  };
+
+  function iniciarQuiz() {
+    fetch(`/quiz/buscarQuiz/${fkQuiz}`)
+      .then(function (res) {
+
+        res.json().then(data => {
+
+          const perguntasID = {};
+
+          for (let i = 0; i < data.length; i++) {
+            const item = data[i];
+
+            if (!perguntasID[item.pergunta_id]) {
+              perguntasID[item.pergunta_id] = {
+                texto: item.pergunta_texto,
+                alternativas: []
+              };
+            }
+
+            perguntasID[item.pergunta_id].alternativas.push({
+              letra: item.alternativa_letra,
+              texto: item.alternativa_texto
+            });
+          }
+
+
+          perguntas = Object.values(perguntasID);
+          respostas = [];
+          indicePergunta = 0;
+
+          startBtn.style.display = "none";
+          quizBox.classList.remove("esconder");
+          mostrarPergunta();
+        })
+
+        //   .catch (error) {
+        //    alert("Erro ao carregar o quiz.");
+        //    console.error(error);
+        //  }
+      })
+
+    // Organizando as perguntas por ID
+  }
+
+</script>
