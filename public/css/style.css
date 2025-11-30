@@ -150,3 +150,117 @@ header.home {
     text-align: center;
 }
 
+
+/* Quiz */
+.content-secion {
+    background-image: url(../assets/imgs/dashFundo.png);
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 72px;
+    color: #1c2541;
+    background-size: cover;
+    background-position: center
+}
+
+.content-secion h1 {
+    max-width: 1300px;
+    text-align: center;
+    font-size: 70px;
+    color: #ffffff;
+    -webkit-text-stroke: 2px rgb(0, 0, 0);
+}
+
+.quiz-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    background-color: white;
+    border-radius: 16px;
+    padding: 90px;
+    margin: auto;
+
+}
+
+.pergunta {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.alternativa {
+    display: flex;
+    margin: 10px 0;
+}
+
+.esconder {
+    display: none;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 18px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    background-color: #fbff05;
+    color: black;
+}
+
+button:disabled {
+    background-color: #aeaeab;
+    cursor: not-allowed;
+}
+
+
+#startBtn {
+    display: block; 
+    margin: 50px auto;
+    font-weight: bold;
+}
+
+/* Tela de Resultado */
+
+#respostasUsuario {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    text-align: left;
+    color: #222121;
+    background-color: white;
+}
+
+#respostasUsuario li {
+    margin-bottom: 12px;
+    background-color: #e0dcdc;
+    padding: 12px 16px;
+    border-left: 4px solid #fbff05;
+    border-radius: 6px;
+}
+
+#respostasUsuario li strong {
+    color: #000000;
+}
+
+#respostasUsuario img {
+    margin: 40px auto 20px auto;
+    border-radius: 12px;
+    border: 4px solid #fbff05;
+}
+
+.botao-dashboard {
+    margin-top: 24px;
+    padding: 12px 24px;
+    background-color: #fbff05;
+    color:black;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.botao-dashboard:hover {
+    background-color: #d1e77f;
+}
