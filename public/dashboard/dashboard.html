@@ -66,18 +66,17 @@
                 <h2>Tabela de Porcentagens</h2>
                 <div id="tabelaLetras"></div>
             </div>
-
         </div>
-
     </section>
 
 </body>
+
 </html>
 
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-      function obterDadosLetras() {
+    function obterDadosLetras() {
         const idUsuario = sessionStorage.ID_USUARIO;
 
         fetch(`/dash/relatorio/letras-ultima/${idUsuario}`)
@@ -90,7 +89,7 @@
             .catch(err => console.error(err));
     }
 
-     function criarDashboardLetras(respostas) {
+    function criarDashboardLetras(respostas) {
 
         const ctx = document.getElementById("graficoLetras").getContext("2d");
 
