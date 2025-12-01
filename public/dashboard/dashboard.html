@@ -145,5 +145,42 @@
         });
     }
 
+    function criarTabelaLetras(respostas) {
+
+        const container = document.getElementById("tabelaLetras");
+        container.innerHTML = "";
+
+        let total = 0;
+        for (let i = 0; i < respostas.length; i++) {
+            total += respostas[i].quantidade;
+        }
+
+        let mensagem = `
+            <table border="1" width="100%" >
+                <tr>
+                    <th>Letra</th>
+                    <th>Quantidade</th>
+                    <th>%</th>
+                </tr>
+        `;
+
+        for (let i = 0; i < respostas.length; i++) {
+            let item = respostas[i];
+            let porcentagem = ((item.quantidade / total) * 100).toFixed(1);
+
+            mensagem += `
+                <tr>
+                    <td>${item.letra.toUpperCase()}</td>
+                    <td>${item.quantidade}</td>
+                    <td>${porcentagem}%</td>
+                </tr>
+            `;
+        }
+
+        mensagem += `</table>`;
+        container.innerHTML = mensagem;
+    }
+
+
 
 </script>
