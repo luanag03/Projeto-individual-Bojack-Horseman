@@ -181,6 +181,36 @@
         container.innerHTML = mensagem;
     }
 
+    function criarKpiPersonagem(respostas) {
 
+        const personagens = {
+            a: { nome: "Bojack Horseman", cor: "#8B4513", img: "../assets/imgs/BojackQuiz.jpg" },
+            b: { nome: "Sarah Lynn", cor: "#FF00FF", img: "../assets/imgs/sarah-lynnQuiz.webp" },
+            c: { nome: "Princess Carolyn", cor: "#EE82EE", img: "../assets/imgs/princesacarolineQuiz.png" },
+            d: { nome: "Mr. Peanutbutter", cor: "#FFFF00", img: "../assets/imgs/mrpeantbutterQuiz.jpeg" },
+            e: { nome: "Diane", cor: "#191970", img: "../assets/imgs/dianeQuiz.jpg" },
+            f: { nome: "Beatrice Horseman", cor: "#A52A2A", img: "../assets/imgs/senhorahorsemanQuiz.png" },
+            g: { nome: "Hollyhock", cor: "#D4FF00", img: "../assets/imgs/hollyhockQuiz.jpg" },
+            h: { nome: "Todd Chavez", cor: "#FF0000", img: "../assets/imgs/toddQuiz.jpg" }
+        };
 
+        let maior = respostas[0];
+
+        for (let i = 1; i < respostas.length; i++) {
+            if (respostas[i].quantidade > maior.quantidade) {
+                maior = respostas[i];
+            }
+        }
+
+        const container = document.getElementById("kpiPersonagem");
+
+        container.innerHTML = `
+            <div class="resultado-kpi">
+                <p><strong>${personagens[maior.letra].nome}</strong></p> 
+                <img src="${personagens[maior.letra].img}" class="kpi-imagem"><br>
+                <p>Letra mais selecionada: <strong>${maior.letra.toUpperCase()}</strong></p><br>
+                <p>Quantidade de respostas (<b>${maior.letra.toUpperCase()}</b>): <strong>${maior.quantidade}</strong></p>
+            </div>
+        `;
+    }
 </script>
