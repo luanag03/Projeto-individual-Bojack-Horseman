@@ -7,23 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bojack | Dashboards</title>
-
     
     <link rel="stylesheet" href="./../css/dashboards.css">
-    <link rel="stylesheet" href="../css/style.css" />
     <script src="../js/sessao.js"></script>
 
     <!-- scripts do Chart.js - 2022-1 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!--FONT AWESOME-->
-    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
 </head>
 
-<!-- <body onload=" atualizarFeed()"> -->
-
 <body>
-    
+
     <header class="home">
         <div class="logo">
             <img src="../assets/icon/Logo_bojack.png" alt="Logo BoJack Horseman">
@@ -49,49 +43,35 @@
         </div>
     </header>
 
- <section>
-    <div class="linha-graficos">
+    <section class="dashboard-personagens">
 
-        <h1 class="titulo"><span>R</span>esultados</h1>
-
-        <div class="card grafico-card">
-            <h2>Gráfico de Personagens</h2>
-            <div class="area-grafico">
-                <canvas id="graficoPersonagens"></canvas>
+        <div class="dashboard-container">
+            <div class="dashboard-titulo">
+                <h1>Dashboard</h1>
             </div>
-        </div>
+            <div class="linha-topo">
+                <div class="card-grafico">
+                    <h2>Gráfico de Personagens</h2>
+                    <canvas id="graficoLetras"></canvas>
+                </div>
 
-        <div class="card legenda-card">
-            <h2>Personagens</h2>
+                <div class="card-kpi">
+                    <h2>Seu Personagem</h2><br>
+                    <div id="kpiPersonagem"></div>
+                </div>
 
-            <ul class="lista-legenda">
-                <li><span class="cor cor1"></span> Bojack Horseman</li>
-                <li><span class="cor cor2"></span> Bojack Horseman</li>
-                <li><span class="cor cor3"></span> Bojack Horseman</li>
-                <li><span class="cor cor4"></span> Bojack Horseman</li>
-                <li><span class="cor cor5"></span> Bojack Horseman</li>
-                <li><span class="cor cor6"></span> Bojack Horseman</li>
-                <li><span class="cor cor7"></span> Bojack Horseman</li>
-            </ul>
-        </div>
-
-    </div>
-
-    <div class="emocao-secao">
-        <h3>Intensidade das Emoções</h3>
-
-        <div class="emocao-grafico">
-            <div class="area-grafico">
-                <canvas id="graficoEmocoes"></canvas>
             </div>
+
+            <div class="card-tabela">
+                <h2>Tabela de Porcentagens</h2>
+                <div id="tabelaLetras"></div>
+            </div>
+
         </div>
-    </div>
 
-</section>
+    </section>
 
-    
 </body>
-
 </html>
 
 <script>
