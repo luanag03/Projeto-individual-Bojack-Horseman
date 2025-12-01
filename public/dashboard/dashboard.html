@@ -16,7 +16,7 @@
 
 </head>
 
-<body>
+<body onload="obterDadosLetras()">
 
     <header class="home">
         <div class="logo">
@@ -76,5 +76,19 @@
 
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+      function obterDadosLetras() {
+        const idUsuario = sessionStorage.ID_USUARIO;
+
+        fetch(`/dash/relatorio/letras-ultima/${idUsuario}`)
+            .then(res => res.json())
+            .then(dados => {
+                criarDashboardLetras(dados);
+                criarTabelaLetras(dados);
+                criarKpiPersonagem(dados);
+            })
+            .catch(err => console.error(err));
+    }
+
 
 </script>
