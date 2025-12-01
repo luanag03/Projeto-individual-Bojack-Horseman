@@ -90,5 +90,60 @@
             .catch(err => console.error(err));
     }
 
+     function criarDashboardLetras(respostas) {
+
+        const ctx = document.getElementById("graficoLetras").getContext("2d");
+
+        const personagens = {
+            a: "Bojack Horseman",
+            b: "Sarah Lynn",
+            c: "Princess Carolyn",
+            d: "Mr. Peanutbutter",
+            e: "Diane",
+            f: "Beatrice Horseman",
+            g: "Hollyhock",
+            h: "Todd Chavez"
+        };
+
+        const cores = {
+            a: "#8B4513",
+            b: "#FF00FF",
+            c: "#EE82EE",
+            d: "#FFFF00",
+            e: "#191970",
+            f: "#A52A2A",
+            g: "#D4FF00",
+            h: "#FF0000"
+        };
+
+        let total = 0;
+        for (let i = 0; i < respostas.length; i++) {
+            total += respostas[i].quantidade;
+        }
+
+        let labels = [];
+        let valores = [];
+        let background = [];
+
+        for (let i = 0; i < respostas.length; i++) {
+            let item = respostas[i];
+
+            labels.push(personagens[item.letra]);
+            valores.push(Number(((item.quantidade / total) * 100).toFixed(1)));
+            background.push(cores[item.letra]);
+        }
+
+        new Chart(ctx, {
+            type: "doughnut",
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: valores,
+                    backgroundColor: background
+                }]
+            }
+        });
+    }
+
 
 </script>
