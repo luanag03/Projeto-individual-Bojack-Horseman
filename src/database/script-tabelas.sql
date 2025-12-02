@@ -62,13 +62,6 @@ CREATE TABLE resposta_alternativa(
     FOREIGN KEY (fkQuiz) REFERENCES quiz(idQuiz)
 );
 
-
-select * from mural;
-select * from usuario;
-select * from resposta_alternativa;
-select* from personagem;
-select * from quiz;
-
 INSERT INTO Personagem (idPersonagem, personagem, Texto) VALUES
 (default, 'Bojack Horseman', 'BoJack é alguém que convive com muitos sentimentos difíceis ao mesmo tempo. Ele passa por fases de tristeza profunda, culpa e arrependimentos que parecem nunca deixar ele em paz. Muitas vezes, BoJack tenta se distrair para não pensar no que sente, mas isso só faz com que ele fique preso em um ciclo de autossabotagem. Ele quer ser uma pessoa melhor, mas tem medo de não conseguir e de decepcionar quem está ao redor. Mesmo com todos os erros, BoJack também tem momentos de muito esforço e coragem para mudar, mostrando que, por trás de toda dor, existe alguém que só queria ser aceito e encontrar um pouco de paz consigo mesmo.'),
 (default, 'Sarah Lynn', 'Sarah Lynn é o tipo de pessoa que cresceu rápido demais e nunca teve espaço para ser simplesmente uma adolescente normal. A fama a colocou em situações que ela não sabia lidar e, por isso, ela acabou buscando conforto no exagero e nas coisas que davam prazer rápido. Por trás do brilho e do glamour, existe uma jovem cheia de inseguranças, medos e um vazio muito grande que nunca conseguiu preencher. Ela tenta parecer forte e divertida, mas carrega mágoas profundas e uma solidão que ninguém vê. No fundo, Sarah Lynn só queria ser cuidada e enxergada como uma pessoa, não como um produto.'),
@@ -83,12 +76,8 @@ INSERT INTO Personagem (idPersonagem, personagem, Texto) VALUES
 INSERT INTO usuario (idUsuario, nome, email, senha, fkPersonagem) VALUES
 (default, 'luana', 'luana@email.com', 'senha1', null);
 
-select * from usuario;
-
--- Inserir quiz
 INSERT INTO quiz (idQuiz, titulo, descricao) VALUES
 (default, 'Qual personagem você é de bojackhorseman?', 'Descubra qual personagem você é !');
-
 
 
 INSERT INTO pergunta (idPergunta, fkQuiz, TEXTO) VALUES
@@ -180,8 +169,6 @@ INSERT INTO alternativa (idAlternativa, texto, letra, fkPergunta) VALUES
 (default, 'O que tenta cuidar dos outros.', 'g', 7),
 (default, 'O que inicia acidentalmente uma subtrama absurda.', 'h', 7);
 
-
--- selecionar todas as perguntas e alternativas de um quiz
 SELECT 
 	q.idQuiz AS quiz_id,
     q.titulo AS quiz_titulo, 
