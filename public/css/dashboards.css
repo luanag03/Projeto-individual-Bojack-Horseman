@@ -25,6 +25,7 @@ header.home {
     height: 135vh;
     padding: 20px;
     gap: 25px;
+    border-radius: 0 0 15px 15px;
 }
 
 .logo img {

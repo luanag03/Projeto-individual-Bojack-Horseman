@@ -23,6 +23,7 @@ header.home {
     height: 135vh;
     padding: 20px;
     gap: 25px;
+    border-radius: 0 0 15px 15px;
 }
 
 .logo img {
@@ -443,6 +444,86 @@ button:disabled {
 
 .publicacao-btn-deletar:hover {
     background-color: #696868;
+}
+
+/* pagina de editar */
+
+.edicao {
+    display: flex ;
+    width: 100%;
+    justify-content: center;  
+    align-items: center;      
+    min-height: 100vh;         
+}
+
+.container-edicao {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    align-items: center; 
+}
+
+.container-edicao h1 {
+    color: #ffffff;
+    text-align: center;
+    font-size: 80px;
+    margin-bottom: 10px;
+}
+
+.container-edicao h1 span {
+    color: #fbff00;
+}
+
+.div-edicao {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.div-edicao {
+    width: 100%;
+}
+
+.div-edicao {
+    display: flex;
+    flex-direction: column;
+    background: #adadad;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 16px rgba(0,0,0,0.12);
+    border-left: 6px solid #fbff00;
+    max-width: 600px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+.div-edicao label {
+    font-weight: 500;
+}
+
+.div-edicao input,
+.div-edicao textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #000000;
+    font-size: 15px;
+}
+
+.div-edicao button {
+    margin-top: 10px;
+    padding: 12px 20px;
+    background: #1d116e;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.div-edicao button:hover {
+    background: #cff109;
 }
 
 
