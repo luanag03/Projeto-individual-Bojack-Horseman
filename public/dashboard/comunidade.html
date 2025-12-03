@@ -45,7 +45,7 @@
         </div>
     </header>
 
-    <div class="container-aviso">
+    <div class="container-comunidade">
         <h1><span>C</span>omunidade</h1>
         <h2>Compartilhe suas ideias !</h2>
         <div class="div-form">
@@ -64,10 +64,11 @@
                 </label>
                 <br>
                 <br>
-                <button onclick="publicar()" type="button" class="enviar-aviso">Enviar</button>
+                <button onclick="publicar()" type="button" class="enviar-comunidade">Enviar</button>
             </form>
         </div>
-        <h3 class="compartilhar">Mural </h3>
+        <h3 class="mural-titulo">Mural</h3>
+        <h4 class="mural-subtitulo" >Desabafe e seja você!</h4>
         <div class="div-results">
             <div id="feed_container" class="feed-container">
             </div>
@@ -130,7 +131,7 @@
     function editar(id) {
         sessionStorage.ID_POSTAGEM_EDITANDO = id;
         console.log("cliquei em editar - " + id);
-        window.alert("Você será redirecionado à página de edição do aviso de id número: " + id);
+        window.alert("Você será redirecionado à página de edição de id número: " + id);
         window.location = "/dashboard/edicao-aviso.html"
 
     }
@@ -172,12 +173,12 @@
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
 
                     var feed = document.getElementById("feed_container");
-                    feed.innerHTML = "";
                     for (let i = 0; i < resposta.length; i++) {
                         var publicacao = resposta[i];
-
+                        
                         // criando e manipulando elementos do HTML via JavaScript
                         var divPublicacao = document.createElement("div");
+                        var divPost = document.createElement("div");
                         var spanID = document.createElement("span");
                         var spanTitulo = document.createElement("span");
                         var spanNome = document.createElement("span");
@@ -186,17 +187,15 @@
                         var btnEditar = document.createElement("button");
                         var btnDeletar = document.createElement("button");
 
-
-                        spanID.innerHTML = "ID: <b>" + publicacao.idUsuario + "</b>";
                         spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
-                        spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
-                        divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
+                        divDescricao.innerHTML = "Texto: <p>" + publicacao.descricao + "</p>";
                         btnEditar.innerHTML = "Editar";
                         btnDeletar.innerHTML = "Deletar";
 
                         divPublicacao.className = "publicacao";
                         spanTitulo.id = "inputNumero" + publicacao.id;
                         spanNome.className = "publicacao-nome";
+                        divPost.className = "div_post"
                         spanTitulo.className = "publicacao-titulo";
                         divDescricao.className = "publicacao-descricao";
 
@@ -210,16 +209,15 @@
                         btnDeletar.id = "btnDeletar" + publicacao.id;
                         btnDeletar.setAttribute("onclick", `deletar(${publicacao.id})`);
 
-                        divPublicacao.appendChild(spanID);
-                        divPublicacao.appendChild(spanNome);
                         divPublicacao.appendChild(spanTitulo);
-                        divPublicacao.appendChild(divDescricao);
+                        divPost.appendChild(divDescricao);
+                        divPublicacao.appendChild(divPost)
                         divPublicacao.appendChild(divButtons);
                         divButtons.appendChild(btnEditar);
                         divButtons.appendChild(btnDeletar);
                         feed.appendChild(divPublicacao);
                     }
-
+                    
                     finalizarAguardar();
                 });
             } else {

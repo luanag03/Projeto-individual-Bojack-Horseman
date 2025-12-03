@@ -8,9 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AquaTech | Página Inicial</title>
 
-    
-    <link rel="stylesheet" href="./../css/dashboards.css">
-    <link rel="stylesheet" href="./../css/estilo.css" />
+    <link rel="stylesheet" href="./../css/style.css" />
     <script src="../js/sessao.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -20,7 +18,6 @@
 </head>
 
 <body onload="validarSessao(), listarInfosDeUm()" style="background-color: #161618;">
-    <!-- <body onload="validarSessao()"> -->
 
     <div class="janela">
 
@@ -50,10 +47,10 @@
         </div>
     </header>
 
-        <div class="dash-right">
+        <div class="edicao-right">
 
-            <div class="avisos">
-                <div class="container">
+            <div class="edicao">
+                <div class="container-edicao">
                     <h1>Editar um aviso</h1>
                     <div class="div-form">
                         <label>
@@ -109,7 +106,7 @@
 
             if (resposta.ok) {
                 window.alert("Post atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-                window.location = "/dashboard/mural.html"
+                window.location = "/dashboard/comunidade.html"
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
