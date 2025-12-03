@@ -68,7 +68,7 @@
             </form>
         </div>
         <h3 class="mural-titulo">Mural</h3>
-        <h4 class="mural-subtitulo" >Desabafe e seja você!</h4>
+        <h4 class="mural-subtitulo">Compartilhe suas ideias, inspire novas conversas e seja você !</h4>
         <div class="div-results">
             <div id="feed_container" class="feed-container">
             </div>
@@ -99,7 +99,7 @@
             descricao: form_postagem.descricao.value
         }
 
-        fetch(`/avisos/publicar/${idUsuario}`, {
+        fetch(`/comunidade/publicar/${idUsuario}`, {
             method: "post",
             headers: {
                 "Content-Type": "application/json"
@@ -132,13 +132,13 @@
         sessionStorage.ID_POSTAGEM_EDITANDO = id;
         console.log("cliquei em editar - " + id);
         window.alert("Você será redirecionado à página de edição de id número: " + id);
-        window.location = "/dashboard/edicao-aviso.html"
+        window.location = "/dashboard/edicao.html"
 
     }
 
     function deletar(id) {
         console.log("Criar função de apagar post escolhido - ID" + id);
-        fetch(`/avisos/deletar/${id}`, {
+        fetch(`/comunidade/deletar/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
@@ -159,7 +159,7 @@
     }
 
     function atualizarFeed() {
-        fetch("/avisos/listar").then(function (resposta) {
+        fetch("/comunidade/listar").then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
                     var feed = document.getElementById("feed_container");
@@ -186,13 +186,15 @@
                         var divButtons = document.createElement("div");
                         var btnEditar = document.createElement("button");
                         var btnDeletar = document.createElement("button");
-
+                     
+                        spanNome.innerHTML = "Usuário: <b>" + publicacao.nome + "</b><br>";
                         spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
                         divDescricao.innerHTML = "Texto: <p>" + publicacao.descricao + "</p>";
                         btnEditar.innerHTML = "Editar";
                         btnDeletar.innerHTML = "Deletar";
 
                         divPublicacao.className = "publicacao";
+                        spanNome.className = "publicacao-nome";
                         spanTitulo.id = "inputNumero" + publicacao.id;
                         spanNome.className = "publicacao-nome";
                         divPost.className = "div_post"
@@ -208,7 +210,8 @@
                         btnDeletar.className = "publicacao-btn-editar"
                         btnDeletar.id = "btnDeletar" + publicacao.id;
                         btnDeletar.setAttribute("onclick", `deletar(${publicacao.id})`);
-
+                       
+                        divPublicacao.appendChild(spanNome);
                         divPublicacao.appendChild(spanTitulo);
                         divPost.appendChild(divDescricao);
                         divPublicacao.appendChild(divPost)

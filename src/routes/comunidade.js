@@ -1,30 +1,30 @@
 var express = require("express");
 var router = express.Router();
 
-var avisoController = require("../controllers/avisoController");
+var comunidadeController = require("../controllers/comunidadeController");
 
 router.get("/listar", function (req, res) {
-    avisoController.listar(req, res);
+    comunidadeController.listar(req, res);
 });
 
 router.get("/listar/:idUsuario", function (req, res) {
-    avisoController.listarPorUsuario(req, res);
+    comunidadeController.listarPorUsuario(req, res);
 });
 
 router.get("/pesquisar/:descricao", function (req, res) {
-    avisoController.pesquisarDescricao(req, res);
+    comunidadeController.pesquisarDescricao(req, res);
 });
 
 router.post("/publicar/:idUsuario", function (req, res) {
-    avisoController.publicar(req, res);
+    comunidadeController.publicar(req, res);
 });
 
 router.put("/editar/:id", function (req, res) {
-    avisoController.editar(req, res);
+    comunidadeController.editar(req, res);
 });
 
 router.delete("/deletar/:id", function (req, res) {
-    avisoController.deletar(req, res);
+    comunidadeController.deletar(req, res);
 });
 
 module.exports = router;

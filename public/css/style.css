@@ -390,6 +390,18 @@ button:disabled {
     padding: 10px;
 }
 
+.publicacao-nome{
+    font-size: 20px;
+    margin-bottom: 8px;
+    font-weight: bold;
+
+}
+
+.publicacao-nome b {
+    color: #000000;
+
+}
+
 .publicacao-titulo {
     font-size: 20px;
     margin-bottom: 8px;

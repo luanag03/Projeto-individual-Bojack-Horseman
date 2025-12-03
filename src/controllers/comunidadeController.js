@@ -1,7 +1,7 @@
-var avisoModel = require("../models/avisoModel");
+var comunidadeModel = require("../models/comunidadeModel");
 
 function listar(req, res) {
-    avisoModel.listar().then(function (resultado) {
+    comunidadeModel.listar().then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -9,7 +9,7 @@ function listar(req, res) {
         }
     }).catch(function (erro) {
         console.log(erro);
-        console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+        console.log("Houve um erro ao buscar os dados da comunidade: ", erro.sqlMessage);
         res.status(500).json(erro.sqlMessage);
     });
 }
@@ -17,7 +17,7 @@ function listar(req, res) {
 function listarPorUsuario(req, res) {
     var idUsuario = req.params.idUsuario;
 
-    avisoModel.listarPorUsuario(idUsuario)
+    comunidadeModel.listarPorUsuario(idUsuario)
         .then(
             function (resultado) {
                 if (resultado.length > 0) {
@@ -31,7 +31,7 @@ function listarPorUsuario(req, res) {
             function (erro) {
                 console.log(erro);
                 console.log(
-                    "Houve um erro ao buscar os avisos: ",
+                    "Houve um erro ao buscar os usuários: ",
                     erro.sqlMessage
                 );
                 res.status(500).json(erro.sqlMessage);
@@ -42,7 +42,7 @@ function listarPorUsuario(req, res) {
 function pesquisarDescricao(req, res) {
     var descricao = req.params.descricao;
 
-    avisoModel.pesquisarDescricao(descricao)
+    comunidadeModel.pesquisarDescricao(descricao)
         .then(
             function (resultado) {
                 if (resultado.length > 0) {
@@ -54,7 +54,7 @@ function pesquisarDescricao(req, res) {
         ).catch(
             function (erro) {
                 console.log(erro);
-                console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+                console.log("Houve um erro ao buscar as descrições: ", erro.sqlMessage);
                 res.status(500).json(erro.sqlMessage);
             }
         );
@@ -72,7 +72,7 @@ function publicar(req, res) {
     } else if (idUsuario == undefined) {
         res.status(403).send("O id do usuário está indefinido!");
     } else {
-        avisoModel.publicar(titulo, descricao, idUsuario)
+        comunidadeModel.publicar(titulo, descricao, idUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -92,7 +92,7 @@ function editar(req, res) {
     var novaDescricao = req.body.descricao;
     var id = req.params.id;
 
-    avisoModel.editar(novaDescricao, id)
+    comunidadeModel.editar(novaDescricao, id)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -111,7 +111,7 @@ function editar(req, res) {
 function deletar(req, res) {
     var id = req.params.id;
 
-    avisoModel.deletar(id)
+    comunidadeModel.deletar(id)
         .then(
             function (resultado) {
                 res.json(resultado);
