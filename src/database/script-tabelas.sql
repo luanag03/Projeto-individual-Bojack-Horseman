@@ -42,7 +42,7 @@ CREATE TABLE quiz (
 CREATE TABLE pergunta (
     idPergunta INT AUTO_INCREMENT PRIMARY KEY,
     fkQuiz INT,
-    Texto VARCHAR(200),
+    texto VARCHAR(200),
     FOREIGN KEY (fkQuiz) REFERENCES quiz(idquiz)
 );
 

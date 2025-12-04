@@ -6,13 +6,13 @@ function buscarQuiz(fkQuiz) {
       q.idQuiz AS quiz_id,
       q.titulo AS quiz_titulo, 
       p.idPergunta AS pergunta_id,
-      p.Texto AS pergunta_texto, 
+      p.texto AS pergunta_texto, 
       a.idAlternativa AS alternativa_id,
       a.texto AS alternativa_texto, 
       a.letra AS alternativa_letra
-    FROM Quiz q
-    JOIN Pergunta p ON q.idQuiz = p.fkQuiz
-    JOIN Alternativa a ON p.idPergunta = a.fkPergunta
+    FROM quiz q
+    JOIN pergunta p ON q.idQuiz = p.fkQuiz
+    JOIN alternativa a ON p.idPergunta = a.fkPergunta
     WHERE q.idQuiz = ${fkQuiz}
     ORDER BY p.idPergunta, a.idAlternativa;
   ` 
