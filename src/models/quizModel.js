@@ -30,7 +30,7 @@ function criarAlternativaPorResposta(fkUsuario, letra) {
 
 function buscarPersonagemPorNome(personagem) {
   var instrucaoSql = `
-    SELECT * FROM Personagem WHERE personagem = '${personagem}';
+    SELECT * FROM personagem WHERE personagem = '${personagem}';
   `;
 
   return database.executar(instrucaoSql);
@@ -38,7 +38,7 @@ function buscarPersonagemPorNome(personagem) {
 
 function salvarPersonagemUsuario(idUsuario, idPersonagem) {
   var instrucaoSql = `
-    UPDATE Usuario 
+    UPDATE usuario 
     SET fkPersonagem = '${idPersonagem}'
     WHERE idUsuario = '${idUsuario}';
   `;

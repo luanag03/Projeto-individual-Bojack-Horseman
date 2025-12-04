@@ -8,19 +8,19 @@ comandos para mysql server
 CREATE DATABASE BojackHorseman;
 USE BojackHorseman;
 
-CREATE TABLE Personagem (
+CREATE TABLE personagem (
 	idPersonagem INT PRIMARY KEY AUTO_INCREMENT,
     personagem VARCHAR(50),
-    Texto VARCHAR(800)
+    texto VARCHAR(800)
 );
 
-CREATE TABLE Usuario (
+CREATE TABLE usuario (
 idUsuario INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(45),
 email VARCHAR(45) UNIQUE,
 senha VARCHAR(200),
 fkPersonagem INT NULL,
-FOREIGN KEY (fkPersonagem) REFERENCES Personagem(idPersonagem)
+FOREIGN KEY (fkPersonagem) REFERENCES personagem(idPersonagem)
 );
 
 CREATE TABLE mural(
@@ -31,26 +31,27 @@ fk_usuario INT,
 FOREIGN KEY( fk_usuario) REFERENCES usuario(idUsuario)
 );
 
+select * from mural;
 
-CREATE TABLE Quiz (
-    idquiz INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE quiz (
+    idQuiz INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(45),
     descricao VARCHAR(45)
 );
 
-CREATE TABLE Pergunta (
+CREATE TABLE pergunta (
     idPergunta INT AUTO_INCREMENT PRIMARY KEY,
     fkQuiz INT,
     Texto VARCHAR(200),
     FOREIGN KEY (fkQuiz) REFERENCES quiz(idquiz)
 );
 
-CREATE TABLE Alternativa (
+CREATE TABLE alternativa (
     idAlternativa INT AUTO_INCREMENT PRIMARY KEY,
     texto VARCHAR(200),
     letra CHAR(1) CHECK (letra IN ('a','b','c','d','e','f','g','h')),
     fkPergunta INT,
-    FOREIGN KEY (fkPergunta) REFERENCES Pergunta(idPergunta)
+    FOREIGN KEY (fkPergunta) REFERENCES pergunta(idPergunta)
 );
 
 CREATE TABLE resposta_alternativa(
@@ -62,7 +63,14 @@ CREATE TABLE resposta_alternativa(
     FOREIGN KEY (fkQuiz) REFERENCES quiz(idQuiz)
 );
 
-INSERT INTO Personagem (idPersonagem, personagem, Texto) VALUES
+
+select * from mural;
+select * from usuario;
+select * from resposta_alternativa;
+select* from personagem;
+select * from quiz;
+
+INSERT INTO personagem (idPersonagem, personagem, texto) VALUES
 (default, 'Bojack Horseman', 'BoJack é alguém que convive com muitos sentimentos difíceis ao mesmo tempo. Ele passa por fases de tristeza profunda, culpa e arrependimentos que parecem nunca deixar ele em paz. Muitas vezes, BoJack tenta se distrair para não pensar no que sente, mas isso só faz com que ele fique preso em um ciclo de autossabotagem. Ele quer ser uma pessoa melhor, mas tem medo de não conseguir e de decepcionar quem está ao redor. Mesmo com todos os erros, BoJack também tem momentos de muito esforço e coragem para mudar, mostrando que, por trás de toda dor, existe alguém que só queria ser aceito e encontrar um pouco de paz consigo mesmo.'),
 (default, 'Sarah Lynn', 'Sarah Lynn é o tipo de pessoa que cresceu rápido demais e nunca teve espaço para ser simplesmente uma adolescente normal. A fama a colocou em situações que ela não sabia lidar e, por isso, ela acabou buscando conforto no exagero e nas coisas que davam prazer rápido. Por trás do brilho e do glamour, existe uma jovem cheia de inseguranças, medos e um vazio muito grande que nunca conseguiu preencher. Ela tenta parecer forte e divertida, mas carrega mágoas profundas e uma solidão que ninguém vê. No fundo, Sarah Lynn só queria ser cuidada e enxergada como uma pessoa, não como um produto.'),
 (default, 'Princess Carolyn', 'Princess Carolyn é extremamente dedicada e sempre tenta dar conta de tudo, como o trabalho, relacionamentos, projetos, responsabilidade de outras pessoas, mesmo quando está completamente esgotada. Ela raramente pede ajuda, porque acredita que precisa ser forte o tempo inteiro. Isso faz com que viva ansiosa e exausta, carregando mais peso do que deveria. Apesar disso, ela nunca desiste e está sempre tentando criar um futuro melhor para si mesma. Seu coração é enorme, mas ela precisa aprender a cuidar dele com a mesma dedicação que cuida de todos ao seu redor. Princess Carolyn é o tipo de pessoa que sofre calada, mas tem uma força admirável.'),
@@ -76,11 +84,15 @@ INSERT INTO Personagem (idPersonagem, personagem, Texto) VALUES
 INSERT INTO usuario (idUsuario, nome, email, senha, fkPersonagem) VALUES
 (default, 'luana', 'luana@email.com', 'senha1', null);
 
+select * from usuario;
+
+-- Inserir quiz
 INSERT INTO quiz (idQuiz, titulo, descricao) VALUES
 (default, 'Qual personagem você é de bojackhorseman?', 'Descubra qual personagem você é !');
 
 
-INSERT INTO pergunta (idPergunta, fkQuiz, TEXTO) VALUES
+
+INSERT INTO pergunta (idPergunta, fkQuiz, texto) VALUES
 (default, 1, 'Nas festas o que você faz é... '),
 (default, 1, 'Como você reage quando está sobrecarregado?'),
 (default, 1, 'Qual seria seu maior erro recorrente?'),
@@ -169,11 +181,13 @@ INSERT INTO alternativa (idAlternativa, texto, letra, fkPergunta) VALUES
 (default, 'O que tenta cuidar dos outros.', 'g', 7),
 (default, 'O que inicia acidentalmente uma subtrama absurda.', 'h', 7);
 
+
+-- selecionar todas as perguntas e alternativas de um quiz
 SELECT 
 	q.idQuiz AS quiz_id,
     q.titulo AS quiz_titulo, 
-    P.idPergunta AS pergunta_id,
-    p.TEXTO AS pergunta_texto, 
+    p.idPergunta AS pergunta_id,
+    p.texto AS pergunta_texto, 
     a.idAlternativa AS alternativa_id,
     a.texto AS alternativa_texto, 
     a.letra AS alternativa_letra
@@ -187,6 +201,22 @@ WHERE
     q.idQuiz = 1
 ORDER BY 
     p.idPergunta, a.idAlternativa;
+    
+    
+    -- Selecionar os dados do mural
+    SELECT 
+            a.id AS id,
+            a.titulo,
+            a.descricao,
+            a.fk_usuario,
+            u.idUsuario AS idUsuario,
+            u.nome,
+            u.email,
+            u.senha
+        FROM mural AS a
+            INNER JOIN usuario AS u
+                ON a.fk_usuario = u.idUsuario;
+
 
 
 
